@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Analyzer Projects</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+div.a {
+    text-align: center;
+	color:black;
+}
+</style>
+<style>
+input:focus {
+    background-color: cyan;
+}
+</style>
+<style>
+.btn-group button {
+    background-color: #4CAF52;
+    border: 1px light green;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: left; 
+    }
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; 
+}
+
+.btn-group button:hover {
+    background-color: #3e8e41;
+}
+</style>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<body background="https://images.wallpaperscraft.com/image/twitter_microblogging_white_bird_30997_1920x1200.jpg">
+<div class="container">
+<div class="a">
+  <i class="fa fa-twitter" style="font-size:75px">Analyzer</i>
+  <form class="form-horizontal" action="/action_page.php">
+  <br>
+  <br>
+  <h3 style="padding-left:650px" id="st">Stats:</h3>
+  <br>
+  
+    <div class="form-group">
+      <label class="control-label col-sm-1" for="tweet" style="color:pink">Tweet About:</label>                           
+      <div class="col-sm-5">
+        <input type="text" class="form-control" id="twt" placeholder="Search for" name="tweet">
+      </div>
+    </div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	 
+
+    <div class="form-group">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      <label class="control-label col-sm-1" for="field" style="color:pink">Field:</label>
+      <div class="col-sm-5">          
+        <input type="text" class="form-control" id="fld" placeholder="Search for" name="field">
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+       <label class="control-label col-sm-1" for="range" style="color:pink">No of tweets :</label>
+          <div class="col-sm-5">          
+        <input type="text" class="form-control" id="nt" placeholder="No of Tweets" name="range">
+      </div>
+    </div>
+    <br>
+    
+  </form>
+</div>
+&emsp;
+&emsp;
+
+<div class="btn-group">
+  <button>pie Chart</button>
+  <button>Bar Graph</button>
+  </div>
+</body>
+    <script>
+        $(document).ready(function(){
+            $("#pie").click(function(){
+                var twt=$("#twt").val();
+                var fld=$("#fld").val();
+                var nt=$("#nt").val();
+                $.get('/stats',{tweet:twt,field:fld,count=nt,chart='pie'},function(response){
+                       alert("Analysis Performed");
+					   $("#st).html(response);
+                       });
+            });
+        });
+    </script>
+</html>
